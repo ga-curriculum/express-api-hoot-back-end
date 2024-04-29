@@ -1,4 +1,4 @@
-# ![[tktk Module Name] - References](./assets/hero.png)
+# ![Express API Hoot - References](./assets/hero.png)
 
 ## Lesson references
 

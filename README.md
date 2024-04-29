@@ -1,4 +1,4 @@
-# ![[tktk Module Name]](./assets/tktk-hero.png)
+# ![Express API Hoot](./assets/hero.png)
 
 ## About
 
@@ -14,19 +14,26 @@ tktk Write a short but descriptive summary of the content in this module.
 
 | Lesson | Video Time | Video | Skills |
 | ------ |:----------:|:-----:| ------ |
-| [Setup](./setup/README.md)                               | -- | -- | Setting up the development environment  |
-| [Concepts](./concepts/README.md)                         | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-01/README.md) | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-02/README.md) | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-03/README.md) | -- | -- | tktk skills covered                     |
+| [Setup](./setup/README.md) | -- | -- | Setting up the development environment  |
+| [Setting the Stage](./setting-the-stage/README.md) | -- | -- | tktk skills covered |
+| [Build the Models](./build-the-models/README.md) | -- | -- | tktk skills covered |
+| [Signup a User](./signup-a-user/README.md) | -- | -- | tktk skills covered |
+| [Create Hoot](./create-hoot/README.md) | -- | -- | tktk skills covered |
+| [Index Hoots](./index-hoots/README.md) | -- | -- | tktk skills covered |
+| [Show Hoot](./show-hoot/README.md) | -- | -- | tktk skills covered |
+| [Update Hoot](./update-hoot/README.md) | -- | -- | tktk skills covered |
+| [Delete Hoot](./delete-hoot/README.md) | -- | -- | tktk skills covered |
+| [Create Comment](./create-comment/README.md) | -- | -- | tktk skills covered |
+
 | **Total content**                                        | -- | -- |                                         |
 
 ## Level Up content
 
 | Lesson | Video Time | Video | Skills |
 | ------ |:----------:|:-----:| ------ |
-| [tktk Microlesson Name](./tktk-microlesson-04/README.md) | -- | -- | tktk skills covered                     |
-| **Total Level Up content**                               | -- | -- |                                         |
+| [Update Comment](./update-comment/README.md) | -- | -- | tktk skills covered |
+| [Delete Comment](./delete-comment/README.md) | -- | -- | tktk skills covered |
+| **Total Level Up content**                               | -- | -- | |
 
 ## References
 
