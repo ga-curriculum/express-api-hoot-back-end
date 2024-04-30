@@ -1,4 +1,4 @@
-# ![Express API Hoot - Create Comment](./assets/hero.png)
+# ![Express API - Hoot Back-End - Create Comment](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to tktk
 

@@ -1,4 +1,4 @@
-# ![Express API Hoot - Setup](./assets/hero.png)
+# ![Express API - Hoot Back-End - Setup](./assets/hero.png)
 
 ## Setup
 

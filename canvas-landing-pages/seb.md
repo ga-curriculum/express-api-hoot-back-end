@@ -1,3 +1,3 @@
-# ![Express API Hoot](../assets/hero.png)
+# ![Express API - Hoot Back-End](../assets/hero.png)
 
 [COMING SOON]

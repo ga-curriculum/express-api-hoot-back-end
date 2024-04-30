@@ -1,4 +1,4 @@
-# ![Express API Hoot - tktk Microlesson Name](./assets/hero.png)
+# ![Express API - Hoot Back-End - Signup a User](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to sign up a user to authenticate requests in Postman.
 
