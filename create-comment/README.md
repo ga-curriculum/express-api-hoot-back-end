@@ -1,6 +1,6 @@
 # ![Express API - Hoot Back-End - Create Comment](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able build a route that adds an embedded comment document to a specific hoot.
 
 ## Overview
 
@@ -76,14 +76,14 @@ router.post('/:hootId/comments', async (req, res) => {
 
 ## Test the route in Postman
 
-Create a new request called **CreateComment** and set the request type to `POST`. 
+Create a new request called **Create Comment** and set the request type to `POST`. 
 
 Once again, this request requires authentication, so ensure the **Authorization** tab is configured correctly.
 
 Your Postman URL should look something like this:
 
 ```
-http://localhost:3001/hoots/61b646f65f455c912b4f2f8d/comments
+http://localhost:3000/hoots/61b646f65f455c912b4f2f8d/comments
 ```
 
 Add the following to the body in **Postman.** Within the **Body** tab, select **raw**, and change the **Text** dropdown to **JSON**.
@@ -96,8 +96,8 @@ Add the following to the body in **Postman.** Within the **Body** tab, select **
 
 After completing the steps above, your request in **Postman** should look something like this:
 
-![tktk Hunter]()
+![Create comment request](./assets/comment-req.png)
 
-A successful response will look like this.
+A successful response will look like the following:
 
-![tktk Hunter]()
+![Create comment response](./assets/comment-res.png)

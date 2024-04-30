@@ -1,6 +1,6 @@
 # ![Express API - Hoot Back-End - Index Hoots](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able to create an index route to retrieve all hoots from the database and send this data as a JSON response to the client.
 
 ## Overview
 
@@ -76,6 +76,6 @@ Your Postman URL should look like this:
 http://localhost:3000/hoots
 ```
 
-You should get a response that includes a populated `author` property within each `hoot` object. 
+If your request was successful, the response will include an array of `hoot` objects, with a populated `author` property inside each `hoot` object:
 
-![tktk Hunter]()
+![Index response](./assets/index.png)
