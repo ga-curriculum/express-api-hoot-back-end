@@ -1,6 +1,6 @@
-# ![Express API Hoot - tktk Microlesson Name](./assets/hero.png)
+# ![Express API - Hoot Back-End - Delete Hoot](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able build a route that removes a single hoot from the database.
 
 ## Overview
 
@@ -75,15 +75,15 @@ Now that we have finished the route let's test it with Postman. We'll do this by
 
 Create a new request in Postman. Let's name this request **Delete** and set its request type to `DELETE`. To test it out, we'll need to grab a hoot `_id` again. Feel free to use the same Postman URL we used for **Show**.
 
-Your Postman URL should look something like this.
+Your Postman URL should look something like the following:
 
 ```
 http://localhost:3000/hoots/61b63d2e397b1f34f5861ebf
 ```
 
-And your request in **Postman** should look something like this.
+And your request in **Postman** should look something like this:
 
-![tktk Hunter]()
+![Delete](./assets/delete.png)
 
 After sending the request, you should see the deleted hoot object as a response.
 

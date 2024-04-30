@@ -1,6 +1,6 @@
-# ![Express API Hoot - Show Hoot](./assets/hero.png)
+# ![Express API - Hoot Back-End - Show Hoot](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able build a route to retrieves a single hoot from the database and sends this data as a JSON response to the client.
 
 ## Overview
 
@@ -73,6 +73,6 @@ Afterwards, your Postman URL should look something like this:
 http://localhost:3000/hoots/61b63d2e397b1f34f5861ebf
 ```
 
-If the request was successful, you should see a response like in the example below.
+If the request was successful, your response will include a single `hoot` object like the example below:
 
-![tktk Hunter]()
+![Show](./assets/show.png)

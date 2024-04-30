@@ -1,6 +1,6 @@
-# ![Express API Hoot - Update Hoot](./assets/hero.png)
+# ![Express API - Hoot Back-End - Update Hoot](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able build a route that updates a single hoot in the database before issuing this updated object as a JSON response to the client.
 
 ## Overview
 
@@ -101,10 +101,10 @@ Add the following to the body section in **Postman**.
 }
 ```
 
-Your request should look something like this.
+Your request should look something like this:
 
-![tktk Hunter]()
+![Update request](./assets/update-req.png)
 
-After sending the request, you should see something like the following response.
+After sending the request, you should see the updated `hoot` object issued in the response:
 
-![tktk Hunter]()
+![Update response](./assets/update-res.png)

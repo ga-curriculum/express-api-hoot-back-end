@@ -1,6 +1,6 @@
-# ![Express API Hoot - Delete Comment](./assets/hero.png)
+# ![Express API - Hoot Back-End - Delete Comment](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able build a route that deletes embedded subdocuments inside a single hoot.
 
 ## Overview
 
@@ -67,9 +67,13 @@ router.delete('/:hootId/comments/:commentId', async (req, res) => {
 Create a new request in **Postman**. Let's name this request **Delete Comment** and set its request type to `DELETE`. Your **Postman** URL should look something like this.
 
 ```
-http://localhost:3001/hoots/63390dddff7c27bc4b86a1aa/comments/633915e08845c5a891cd4bf2
+http://localhost:/hoots/63390dddff7c27bc4b86a1aa/comments/633915e08845c5a891cd4bf2
 ```
 
-Your **Postman** request should look something like this.
+Your **Postman** request should look something like this:
 
-![tktk Hunter]()
+![Delete request](./assets/delete-req.png)
+
+The response should be an object containing a `message: "Ok"` property:
+
+![Delete response](./assets/delete-res.png)

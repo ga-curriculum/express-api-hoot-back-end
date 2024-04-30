@@ -1,4 +1,4 @@
-# ![Express API Hoot - tktk Microlesson Name](./assets/hero.png)
+# ![Express API - Hoot Back-End - Signup a User](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to sign up a user to authenticate requests in Postman.
 
@@ -41,13 +41,13 @@ Notice the inclusion of the `token`. We'll add this `token` to a special tab in 
 
 In **Postman**, create a new collection called **Hoot**:
 
-![tktk Hunter]()
+![Collection](./assets/collection.png)
 
 With this collection, we'll be able to group a series of Postman requests, and reuse them as necessary. This makes it easier to return to previous requests when necessary. The other advantage relates to Authorization. As discussed earlier, we'll need to include a bearer token on future requests. By using a collection, all requests included in the collection will be able to inherit the same token.
 
 After creating the collection, locate the **Add a request** button:
 
-![tktk Hunter]()
+![Add request](./assets/add-request.png)
 
 We need to make a new Postman request called **Signup**. Start by updating the fields highlighted below:
 
@@ -61,11 +61,11 @@ We need to make a new Postman request called **Signup**. Start by updating the f
 
 After doing this, your Postman interface should look like the following:
 
-![tktk Hunter]()
+![Signup](./assets/signup.png)
 
 Finally, be sure to click the **Save** button:
 
-![tktk Hunter]()
+![Save](./assets/save.png)
 
 Add your account information to the **Body** in **Postman**, as shown in the example below:
 
@@ -78,20 +78,22 @@ Add your account information to the **Body** in **Postman**, as shown in the exa
 
 If the request was successful, you should see something like the following response:
 
-![tktk Hunter]()
+![Response](./assets/response.png)
 
-> 🚨 We'll be using this `token` in the next few steps, so be sure to *save it somewhere easily accessible*. When you copy the value of the token, **do not include the quotes**.
+We'll be using this `token` in the next few steps, so be sure to *save it somewhere easily accessible*. When you copy the value of the token, **do not include the quotes**.
 
-![tktk Hunter]()
+![Token](./assets/token.png)
 
 Select your Hoot collection in **Postman**. Click on the **Authorization** tab. 
 
-Set the **Type** to **Bearer Token** and add your `token` to the input field. 
+![Auth tab](./assets/auth-tab.png)
 
-Don't forget to click the **Save button**. 
+Set the **Type** to **Bearer Token** and add your `token` to the **Token** input field. 
+
+![Bearer token](./assets/bearer-token.png)
+
+Afterwards, don't forget to click the **Save button**. 
 
 > 💡 Depending on the width of your **Postman** window, you might need to click the dropdown menu in the screenshot below to access the **Save** option. Alternatively, the **Save** button will be represented by a floppy disk icon.
-
-![tktk Hunter]()
 
 Congratulations. Now that we have a `user`, we can start to building out CRUD on our `hoots`.

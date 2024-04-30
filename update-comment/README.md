@@ -1,6 +1,6 @@
-# ![Express API Hoot - Update Comment](./assets/hero.png)
+# ![Express API - Hoot Back-End - Update Comment](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able build a route that updates embedded subdocuments inside a single hoot.
 
 ## Overview
 
@@ -68,7 +68,7 @@ Create a new request called **Update Comment** and set the request type to `PUT`
 Your Postman URL should look something like this:
 
 ```
-http://localhost:3001/hoots/63390dddff7c27bc4b86a1aa/comments/633915e08845c5a891cd4bf2
+http://localhost:3000/hoots/63390dddff7c27bc4b86a1aa/comments/633915e08845c5a891cd4bf2
 ```
 
 Add the following to the **Postman** body section.
@@ -81,4 +81,8 @@ Add the following to the **Postman** body section.
 
 Your **Postman** request should look something like this.
 
-![tktk Hunter]()
+![Update comment request](./assets/comment-update-req.png)
+
+The response should be an object containing a `message: "Ok"` property:
+
+![Update comment response](./assets/comment-update-res.png)

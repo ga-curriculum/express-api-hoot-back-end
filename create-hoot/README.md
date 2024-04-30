@@ -1,6 +1,6 @@
-# ![Express API Hoot - Create Hoot](./assets/hero.png)
+# ![Express API - Hoot Back-End - Create Hoot](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able to build a request that adds hoots to the database and sends a JSON response to the client.
 
 ## Overview
 
@@ -141,21 +141,23 @@ const hootSchema = new mongoose.Schema(
 );
 ```
 
-In **Postman,** make a new `POST` request ****called **Create**. 
+In **Postman**, make a new `POST` request called **Create**. 
 
-![tktk Hunter]()
+![Add request](./assets/add-request.png)
+
+> 🚨 Be sure to add this request to your **Hoot** collection.
 
 The correct URL is provided below.
 
 ```
-http://localhost:3001/hoots
+http://localhost:3000/hoots
 ```
 
 Since this request requires authentication, we'll need to give **Postman** access to our token from the previous step. 
 
-Select the **Authorization** tab, and make sure the type is set to **Inherit auth from parent**.
+Select the **Authorization** tab, and make sure the **Type** is set to **Inherit auth from parent**.
 
-![tktk Hunter]()
+![Auth](./assets/auth.png)
 
 Within the **Body** tab, select **raw**, and change the **Text** dropdown to **JSON**. Next, add the following to the body in **Postman.** 
 
@@ -169,8 +171,8 @@ Within the **Body** tab, select **raw**, and change the **Text** dropdown to **J
 
 Your request in **Postman** should look something like this. Note the changed values highlighted below, and don’t forget to save:
 
-![tktk Hunter]()
+![Request](./assets/request.png)
 
-After sending the request, you should see something like the response below.
+If your request was successful, you should see something like the response below:
 
-![tktk Hunter]()
+![Response](./assets/response.png)

@@ -1,4 +1,4 @@
-# ![Express API Hoot - Setting the Stage](./assets/hero.png)
+# ![Express API - Hoot Back-End - Setting the Stage](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to tktk
 
@@ -33,7 +33,7 @@ User stories related to signing up and signing in have been included for us in t
 
 Take a look at the ERD below to get a sense of the data we'll be working with:
 
-![tktk Hunter]()
+![ERD](./assets/erd.png)
 
 ## Express & Postman
 
