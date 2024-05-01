@@ -40,6 +40,10 @@ const router = express.Router();
 
 // ========= Protected Routes =========
 router.use(verifyToken);
+
+
+
+module.exports = router;
 ```
 
 In `server.js`, let's import the `hootsRouter` and add it to our `'/hoots'` route.
