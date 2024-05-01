@@ -15,7 +15,7 @@ This lecture uses the [Express API JWT Auth Template](https://git.generalassemb.
 Navigate to the [Express API JWT Auth Template](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template.git)and clone the repository to your machine:
 
 ```bash
-git https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template.git
+git clone https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template.git
 ```
 
 Once we have the repository on our machines, we can change the name of the directory to `'express-api-hoot'`:
