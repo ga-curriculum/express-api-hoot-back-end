@@ -1,10 +1,10 @@
 # ![Express API - Hoot Back-End - Build the Models](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model for use with an API.
+**Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model for use with an Express API.
 
 ## Overview
 
-In this lesson, we'll define the models necessary for our application. The resources in our application will include a `User` model (included in our starter code), a `Hoot` model, and a `commentSchema`, embedded inside the `Hoot`.
+In this lesson, we'll define the models necessary for our application. The resources in our application will include a `User` model (included in our starter code), a `Hoot` model, and a `commentSchema`, embedded inside the `Hoot` model.
 
 ## User model
 
@@ -12,6 +12,7 @@ Take a moment to review the existing `userSchema`, as we'll make use of the `Use
 
 ```js
 // models/user.js
+
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -34,7 +35,7 @@ userSchema.set('toJSON', {
 module.exports = mongoose.model('User', userSchema);
 ```
 
-Thanks to the `verifyToken` middleware function, all protected routes in our application will have access to an object representing the logged in `user`, through the `req` object. For our purposes, most relevant properties on the `user` object will be its ObjectId (`_id`) and the `username`. Additionally, the `User` model will be referenced by `hoot` documents.
+Thanks to the `verifyToken` middleware function, all protected routes in our application will have access to an object representing the logged in `user`, through the `req` object. For our purposes, the most relevant properties on the `user` object will be its ObjectId (`_id`) and the `username`. Additionally, the `User` model will be ***referenced*** by `hoot` documents.
 
 
 ## Create the model file `models/hoot.js`
@@ -55,12 +56,13 @@ Before we're able to define our schema and model, we must first import the `mong
 
 ```js
 // models/hoot.js
+
 const mongoose = require('mongoose');
 ```
 
 Next we'll define the schema, which will act as a blueprint for the shape of `hoot` data in our database.
 
-Our `hootSchema` will consist of a `title` property, a `text` property, and a `category` property, all `required`, with a `type` of `String`. The `category` property will differ slightly from the others, in that we will use `enum` to limit its allowed values to the following:
+Our `hootSchema` will consist of a `title` property, a `text` property, and a `category` property, all `required`, with a `type` of `String`. The `category` property will differ slightly from the others, here we will use `enum` to limit its allowed values to the following:
 
 ```js
 ['News', 'Sports', 'Games', 'Movies', 'Music', 'Television']
@@ -72,6 +74,7 @@ Update `models/hoot.js` with the following:
 
 ```js
 // models/hoot.js
+
 const hootSchema = new mongoose.Schema(
   {
     title: {
@@ -93,7 +96,7 @@ const hootSchema = new mongoose.Schema(
 );
 ```
 
-> 💡 Notice this inclusion of `{ timestamps: true }`. This will give our `hoot` documents `createdAt` and `updatedAt` properties. We can use the `createdAt` property when we want to display the date a hoot post was made on.
+> 💡 Notice this inclusion of `{ timestamps: true }`. This will give our `hoot` documents `createdAt` and `updatedAt` properties. We can use the `createdAt` property when we want to display the date a hoot post was made.
 
 ## Register the model
 
@@ -101,6 +104,7 @@ Now that we've defined our schema, we'll tell Mongoose to create a collection in
 
 ```js
 // models/hoot.js
+
 const Hoot = mongoose.model('Hoot', hootSchema);
 ```
 
@@ -110,6 +114,7 @@ Finally, we'll export the `Hoot` model so that the rest of our application has a
 
 ```js
 // models/hoot.js
+
 module.exports = Hoot;
 ```
 
@@ -123,6 +128,7 @@ Add the following to `models/hoot.js`:
 
 ```js
 // models/hoot.js
+
 const commentSchema = new mongoose.Schema(
   {
     text: {
@@ -141,6 +147,7 @@ Next we'll need to update the `hootSchema` with a `comments` property:
 
 ```js
 // models/hoot.js
+
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     comments: [commentSchema]
   },

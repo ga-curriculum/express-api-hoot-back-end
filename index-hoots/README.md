@@ -29,18 +29,19 @@ Inside `controllers/hoots.js`, add the following:
 
 ```jsx
 // controllers/hoots.js
-router.get('/', async (req, res) => { });
+
+router.get('/', async (req, res) => {});
 ```
 
-> 🚨 A user needs to be logged in to view a list of hoots, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
+> ❗ A user needs to be logged in to view a list of hoots, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
 
-> 💡 Restricting access to the `index` and `show` functionality will reduce the amount of conditional rendering we need to implement in our React app. 
+> 💡 Restricting access to the `index` and `show` functionality will reduce the amount of conditional rendering we need to implement in our React app.
 
 ## Code the controller function
 
 Let's breakdown what we'll accomplish inside our controller function.
 
-We'll call upon the `find({})` method of our `Hoot` model, retrieving all `hoots` from the database. When we call upon `find({})`, we'll chain two additional methods to the end. 
+We'll call upon the `find({})` method of our `Hoot` model, retrieving all `hoots` from the database. When we call upon `find({})`, we'll chain two additional methods to the end.
 
 - The first is the `populate()` method. We'll use this to populate the `author` property of each hoot with a `user` object.
 
@@ -52,6 +53,7 @@ Add the following to `controllers/hoots.js`:
 
 ```jsx
 // controllers/hoots.js
+
 router.get('/', async (req, res) => {
   try {
     const hoots = await Hoot.find({})
@@ -66,9 +68,9 @@ router.get('/', async (req, res) => {
 
 ## Test the route in Postman
 
-Now that we have finished the route let's test it with Postman. We'll do this by sending a `GET` request to `http://localhost:3000/hoots`. 
+Now that we have finished the route let's test it with Postman. We'll do this by sending a `GET` request to `http://localhost:3000/hoots`.
 
-Within Postman, create a new `GET` request. We'll name this request **Index**. 
+Within Postman, create a new `GET` request. We'll name this request **Index**.
 
 Your Postman URL should look like this:
 

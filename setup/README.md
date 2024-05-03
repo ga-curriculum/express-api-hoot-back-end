@@ -12,22 +12,22 @@ cd ~/code/ga/lectures
 
 This lecture uses the [Express API JWT Auth Template](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template.git) as starter code. The template includes code to authenticate users with JWT tokens.
 
-Navigate to the [Express API JWT Auth Template](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template.git)and clone the repository to your machine:
+Navigate to the [Express API JWT Auth Template](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template.git) and clone the repository to your machine:
 
 ```bash
 git clone https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template.git
 ```
 
-Once we have the repository on our machines, we can change the name of the directory to `'express-api-hoot'`:
+Once we have the repository on our machines, we can change the name of the directory to `'express-api-hoot-back-end'`:
 
 ```bash
-mv express-api-jwt-auth-template express-api-hoot
+mv express-api-jwt-auth-template express-api-hoot-back-end
 ```
 
 Next, `cd` into your renamed directory:
 
 ```bash
-cd express-api-hoot
+cd express-api-hoot-back-end
 ```
 
 Finally, remove the existing `.git` information from this template:
@@ -48,12 +48,12 @@ git add .
 git commit -m "init commit"
 ```
 
-Make a new repository on [GitHub](https://github.com/) named `express-api-hoot`. 
+Make a new repository on [GitHub](https://github.com/) named `express-api-hoot-back-end`.
 
 Link your local project to your remote GitHub repo:
 
 ```bash
-git remote add origin https://github.com/<github-username>/express-api-hoot.git
+git remote add origin https://github.com/<github-username>/express-api-hoot-back-end.git
 git push origin main
 ```
 
@@ -81,7 +81,7 @@ Run the following command in your terminal:
 touch .gitignore
 ```
 
-Once these files are created, add `.env`, `package-lock.json`, and `node_modules` to your `.gitignore` file.  Doing so will prevent those files and directories from being tracked and we can be confident that any data we add there will not be pushed up to GitHub.
+Once these files are created, add `.env`, `package-lock.json`, and `node_modules` to your `.gitignore` file. Doing so will prevent those files and directories from being tracked and we can be confident that any data we add there will not be pushed up to GitHub.
 
 ```text
 .env
@@ -99,7 +99,7 @@ touch .env
 
 Lastly, we want to add a `MONGODB_URI` and a `JWT_SECRET`.
 
-Add a `.env` file to your application and add the following secret keys to your application:
+Add the following secret keys to your application:
 
 ```text
 MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/hoot?retryWrites=true
@@ -114,4 +114,4 @@ Start the application with the following command:
 nodemon server.js
 ```
 
-Happy Coding! 
+Happy Coding!

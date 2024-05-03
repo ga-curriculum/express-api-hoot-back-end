@@ -1,6 +1,6 @@
 # ![Express API - Hoot Back-End - Signup a User](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to sign up a user to authenticate requests in Postman.
+**Learning objective:** By the end of this lesson, students will be able to sign up a new user using Postman.
 
 ## Overview
 
@@ -12,6 +12,7 @@ In `server.js`, you'll notice that the `usersRouter` is mounted with a base path
 
 ```js
 // server.js
+
 app.use('/users', usersRouter);
 ```
 
@@ -19,6 +20,7 @@ Take note of the `/signup` route defined in `controllers/users.js`:
 
 ```js
 // controllers/users.js
+
 router.post('/signup', async (req, res) => {...});
 ```
 
@@ -32,10 +34,11 @@ The last detail to take note of is the response (`res`) issued by our signup con
 
 ```js
 // controllers/users.js
+
 res.status(201).json({ user, token });
 ```
 
-Notice the inclusion of the `token`. We'll add this `token` to a special tab in Postman, which will allow us to included it as a bearer token on future requests. This will be important, as beyond sign up and sign in, all other features in this application will be protected, requiring sign in.
+Notice the route returns a `token`. We'll add this `token` to a special tab in Postman, which will allow us to included it as a bearer token on future requests. This will be important, as beyond sign up and sign in, all other features in this application will be protected, requiring authenticated requests to access them.
 
 ## Test the route in Postman
 
@@ -43,7 +46,7 @@ In **Postman**, create a new collection called **Hoot**:
 
 ![Collection](./assets/collection.png)
 
-With this collection, we'll be able to group a series of Postman requests, and reuse them as necessary. This makes it easier to return to previous requests when necessary. The other advantage relates to Authorization. As discussed earlier, we'll need to include a bearer token on future requests. By using a collection, all requests included in the collection will be able to inherit the same token.
+With this collection, we'll be able to group a series of Postman requests, and reuse them as necessary. This makes it easier to return to previous requests later. The other advantage relates to Authorization. As discussed earlier, we'll need to include a bearer token on all future requests for `Hoot` resources. By using a collection, all requests included in the collection will be able to share the same token.
 
 After creating the collection, locate the **Add a request** button:
 
@@ -67,7 +70,7 @@ Finally, be sure to click the **Save** button:
 
 ![Save](./assets/save.png)
 
-Add your account information to the **Body** in **Postman**, as shown in the example below:
+Add some test account information to the **Body** in **Postman**, as shown below:
 
 ```json
 {
@@ -80,7 +83,7 @@ If the request was successful, you should see something like the following respo
 
 ![Response](./assets/response.png)
 
-We'll be using this `token` in the next few steps, so be sure to *save it somewhere easily accessible*. When you copy the value of the token, **do not include the quotes**.
+We'll be using the `token` issued here in the next few steps, so be sure to *save it somewhere easily accessible*. When you copy the value of the token, **do not include the quotes**.
 
 ![Token](./assets/token.png)
 
@@ -96,4 +99,4 @@ Afterwards, don't forget to click the **Save button**.
 
 > 💡 Depending on the width of your **Postman** window, you might need to click the dropdown menu in the screenshot below to access the **Save** option. Alternatively, the **Save** button will be represented by a floppy disk icon.
 
-Congratulations. Now that we have a `user`, we can start to building out CRUD on our `hoots`.
+Congratulations - Now that we have a `user`, we can start to building out CRUD on our `hoots`.
