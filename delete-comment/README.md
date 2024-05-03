@@ -29,12 +29,13 @@ Add the following to `controllers/hoots.js`:
 
 ```js
 // controllers/hoots.js
-router.delete('/:hootId/comments/:commentId', async (req, res) => { });
+
+router.delete('/:hootId/comments/:commentId', async (req, res) => {});
 ```
 
 > 🧠 This route might be seem intimidating at first. It requires both a `hootId` a `commentId`, so that we can locate both the parent, and then the child document within it.
 
-> 🚨 A user needs to be logged in to update a comment, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
+> ❗ A user needs to be logged in to update a comment, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
 
 ## Code the controller function
 
@@ -50,12 +51,13 @@ Add the following to `controllers/hoots.js`:
 
 ```js
 // controllers/hoots.js
+
 router.delete('/:hootId/comments/:commentId', async (req, res) => {
   try {
     const hoot = await Hoot.findById(req.params.hootId);
     hoot.comments.remove({ _id: req.params.commentId });
     await hoot.save();
-    res.status(200).json({ message: "Ok"});
+    res.status(200).json({ message: 'Ok' });
   } catch (err) {
     res.status(500).json(err);
   }
