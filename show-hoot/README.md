@@ -35,7 +35,7 @@ router.get('/:hootId', verifyToken, async (req, res) => {
 });
 ```
 
-> ❗ A user needs to be logged in to view hoot details, so besure to include the `verifyToken` middleware.
+> ❗ A user needs to be logged in to view hoot details, so be sure to include the `verifyToken` middleware.
 
 ## Code the controller function
 

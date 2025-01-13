@@ -30,12 +30,12 @@ Add the following to `controllers/hoots.js`:
 ```js
 // controllers/hoots.js
 
-router.put('/:hootId', async (req, res) => {});
+router.put('/:hootId', verifyToken, async (req, res) => {
+  // add route
+});
 ```
 
-> ❗ A user needs to be logged in to update a hoot, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
-
-> 💡 Remember, in `server.js`, we defined a base path of `/hoots` for our `hootsRouter`. Therefore, we will provide the `router` above with a path of `'/:hootId'`, as this will be appended to the end of what is defined in `server.js`.
+> ❗ A user needs to be logged in to update a hoot, so be sure to include the `verifyToken` middleware.
 
 ## Code the controller function
 
@@ -49,11 +49,11 @@ If the `user` has permission to update the resource, we'll call upon our `Hoot` 
 
 When calling upon `findByIdAndUpdate()`, we pass in three arguments:
 
-- The first is the ObjectId (`req.params.hootId`) by which we will locate the `hoot`.
+1. The first is the ObjectId (`req.params.hootId`) by which we will locate the `hoot`.
 
-- The second is the form data (`req.body`) that will be used to update the `hoot` document.
+2. The second is the form data (`req.body`) that will be used to update the `hoot` document.
 
-- The third argument (`{ new: true }`) specifies that we want this method to **return the updated document**.
+3. The third argument (`{ new: true }`) specifies that we want this method to **return the updated document**.
 
 After updating the hoot, we'll append a complete `user` object to the `updatedHoot` document (as we did in our create controller function).
 
@@ -64,7 +64,7 @@ Add the following to `controllers/hoots.js`:
 ```js
 // controllers/hoots.js
 
-router.put('/:hootId', async (req, res) => {
+router.put('/:hootId', verifyToken, async (req, res) => {
   try {
     // Find the hoot:
     const hoot = await Hoot.findById(req.params.hootId);
@@ -96,7 +96,7 @@ router.put('/:hootId', async (req, res) => {
 
 ## Test the route in Postman
 
-Now that we have finished the route, let's test it with Postman. We'll do this by sending a `PUT` request to `http://localhost:3000/hoots/:hootId`.
+Now that we have finished the route, let's test it with Postman. We'll do this by sending a `PUT` request to `/:hootId`.
 
 Create a new request in Postman. We will name this request **Update** and set its request type to `PUT`. To test it out, we'll need to grab a hoot `_id` again. Feel free to use the same Postman URL we used for **Show**.
 
