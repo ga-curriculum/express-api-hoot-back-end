@@ -30,12 +30,12 @@ Inside `controllers/hoots.js`, we'll define a route to find a single `hoot` by `
 ```jsx
 // controllers/hoots.js
 
-router.get('/:hootId', async (req, res) => {});
+router.get('/:hootId', verifyToken, async (req, res) => {
+  // add route
+});
 ```
 
-> ❗ A user needs to be logged in to view hoot details, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
-
-> 💡 Remember, in `server.js`, we defined a base path of `/hoots` for our `hootsRouter`. Therefore, we will provide the `router` above with a path of `'/:hootId'`, as this will be appended to the end of what is defined in `server.js`.
+> ❗ A user needs to be logged in to view hoot details, so besure to include the `verifyToken` middleware.
 
 ## Code the controller function
 
@@ -50,7 +50,7 @@ Add the following to `controllers/hoots.js`:
 ```jsx
 // controllers/hoots.js
 
-router.get('/:hootId', async (req, res) => {
+router.get('/:hootId', verifyToken, async (req, res) => {
   try {
     const hoot = await Hoot.findById(req.params.hootId).populate('author');
     res.status(200).json(hoot);
@@ -62,7 +62,7 @@ router.get('/:hootId', async (req, res) => {
 
 ## Test the route in Postman
 
-Now that we have finished the route let's test it with Postman. We'll do this by sending a `GET` request to `http://localhost:3000/hoots/:hootId`.
+Now that we have finished the route let's test it with Postman. We'll do this by sending a `GET` request to `/:hootId`.
 
 Create a new request in **Postman**. We will name this request **Show** and set its request type to `GET`. To test it out, we'll need to grab the value of a hoot `_id`.
 
