@@ -32,31 +32,33 @@ Add the following to `controllers/hoots.js`:
 ```js
 // controllers/hoots.js
 
-router.post('/:hootId/comments', async (req, res) => {});
+router.post('/:hootId/comments', verifyToken, async (req, res) => {
+  // add route
+});
 ```
 
-> ❗ A user needs to be logged in to create a comment, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
+> ❗ A user needs to be logged in to create a comment, so be sure to include the `verifyToken` middleware.
 
 ## Code the controller function
 
 Let's breakdown what we'll accomplish inside our controller function.
 
-As we did when creating hoots, we'll first append `req.user._id` to `req.body.author`. This updates the form data that will be used to create the resource, and ensures that the logged in user is marked as the `author` of a `comment`.
+1. As we did when creating hoots, we'll first append `req.user._id` to `req.body.author`. This updates the form data that will be used to create the resource, and ensures that the logged in user is marked as the `author` of a `comment`.
 
-Next we'll call upon the `Hoot` model's `findById()` method. The retrieved `hoot` is the parent document we wish to add a comment to.
+2. Next we'll call upon the `Hoot` model's `findById()` method. The retrieved `hoot` is the parent document we wish to add a comment to.
 
-Because `comments` are embedded inside `hoot`'s, the `commentSchema` has not been compiled into a model. As a result, we cannot call upon the `create()` method to produce a new comment. Instead, we'll use the `Array.prototype.push()` method, provide it with `req.body`, and add the new comment data to the `comments` array inside the `hoot` document.
+3. Because `comments` are embedded inside `hoot`'s, the `commentSchema` has not been compiled into a model. As a result, we cannot call upon the `create()` method to produce a new comment. Instead, we'll use the `Array.prototype.push()` method, provide it with `req.body`, and add the new comment data to the `comments` array inside the `hoot` document.
 
-To save the comment to our database, we call upon the `save()` method of the `hoot` document instance.
+4. To save the comment to our database, we call upon the `save()` method of the `hoot` document instance.
 
-After saving the `hoot` document, we locate the `newComment` using its position at the end of the `hoot.comments` array, append the `author` property with a `user` object, and issue the `newComment` as a JSON response.
+5. After saving the `hoot` document, we locate the `newComment` using its position at the end of the `hoot.comments` array, append the `author` property with a `user` object, and issue the `newComment` as a JSON response.
 
 Add the following to `controllers/hoots.js`:
 
 ```js
 // controllers/hoots.js
 
-router.post('/:hootId/comments', async (req, res) => {
+router.post('/:hootId/comments', verifyToken, async (req, res) => {
   try {
     req.body.author = req.user._id;
     const hoot = await Hoot.findById(req.params.hootId);
@@ -77,6 +79,8 @@ router.post('/:hootId/comments', async (req, res) => {
 ```
 
 ## Test the route in Postman
+
+Now that we have finished the route let's test it with Postman. We'll do this by sending a `POST` request to `/hoots/:hootId/comments`.
 
 Create a new request called **Create Comment** and set the request type to `POST`.
 
