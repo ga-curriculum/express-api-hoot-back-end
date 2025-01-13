@@ -28,12 +28,13 @@ DELETE /hoots/:hootId
 Add the following to `controllers/hoots.js`:
 
 ```jsx
-router.delete('/:hootId', async (req, res) => {});
+router.delete('/:hootId', verifyToken, async (req, res) => {
+  // add route
+});
 ```
 
-> ❗ A user needs to be logged in to delete a hoot, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
+> ❗ A user needs to be logged in to delete a hoot, so be sure to include the `verifyToken` middleware.
 
-> 💡 Remember, in `server.js`, we defined a base path of `/hoots` for our `hootsRouter`. Therefore, we will provide the `router` above with a path of `'/:hootId'`, as this will be appended to the end of what is defined in `server.js`.
 
 ## Code the controller function
 
@@ -52,7 +53,7 @@ Finally, we issue a JSON response with the `deletedHoot` object.
 ```js
 // controllers/hoots.js
 
-router.delete('/:hootId', async (req, res) => {
+router.delete('/:hootId', verifyToken, async (req, res) => {
   try {
     const hoot = await Hoot.findById(req.params.hootId);
 
@@ -72,7 +73,7 @@ router.delete('/:hootId', async (req, res) => {
 
 ## Test the route in Postman
 
-Now that we have finished the route let's test it with Postman. We'll do this by sending a `DELETE` request to `http://localhost:3000/hoots/:hootId`.
+Now that we have finished the route let's test it with Postman. We'll do this by sending a `DELETE` request to `/:hootId`.
 
 Create a new request in Postman. Let's name this request **Delete** and set its request type to `DELETE`. To test it out, we'll need to grab a hoot `_id` again. Feel free to use the same Postman URL we used for **Show**.
 

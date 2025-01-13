@@ -35,7 +35,7 @@ router.get("/", verifyToken, async (req, res) => {
 });
 ```
 
-> ❗ A user needs to be logged in to view a list of hoots, so besure to include the `verifyToken` middleware.
+> ❗ A user needs to be logged in to view a list of hoots, so be sure to include the `verifyToken` middleware.
 
 > 💡 Restricting access to the `index` and `show` functionality will reduce the amount of conditional rendering we need to implement in our React app.
 
