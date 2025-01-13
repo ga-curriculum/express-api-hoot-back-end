@@ -63,13 +63,33 @@ router.put("/:hootId/comments/:commentId", verifyToken, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.put("/:hootId/comments/:commentId", verifyToken, async (req, res) => {
+  try {
+    const hoot = await Hoot.findById(req.params.hootId);
+    const comment = hoot.comments.id(req.params.commentId);
+
+    // ensures the current user is the author of the comment
+    if (comment.author.toString() !== req.user._id) {
+      return res
+        .status(403)
+        .json({ message: "You are not authorized to edit this comment" });
+    }
+
+    comment.text = req.body.text;
+    await hoot.save();
+    res.status(200).json({ message: "Updated!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 ```
 
 ## Test the route in Postman
 
 Now that we have finished the route let's test it with Postman. We'll do this by sending a `PUT` request to `/hoots/:hootId/comments/:commentId`.
 
-Create a new request called **Update Comment** and set the request type to `PUT`. 
+Create a new request called **Update Comment** and set the request type to `PUT`.
 
 Your Postman URL should look something like this:
 
@@ -89,6 +109,6 @@ Your **Postman** request should look something like this.
 
 ![Update comment request](./assets/comment-update-req.png)
 
-The response should be an object containing a `message: "Ok"` property:
+The response should be an object containing a `message: "Updated!"` property:
 
 ![Update comment response](./assets/comment-update-res.png)
