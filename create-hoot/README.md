@@ -105,7 +105,7 @@ Add the following to `controllers/hoots.js`:
 ```jsx
 // controllers/hoots.js
 
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   try {
     req.body.author = req.user._id;
     const hoot = await Hoot.create(req.body);
