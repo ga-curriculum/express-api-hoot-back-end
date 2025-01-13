@@ -54,20 +54,21 @@ Add the following to `controllers/hoots.js`:
 ```js
 // controllers/hoots.js
 
-router.delete('/:hootId/comments/:commentId', verifyToken, async (req, res) => {
+router.delete("/:hootId/comments/:commentId", verifyToken, async (req, res) => {
+  try {
     const hoot = await Hoot.findById(req.params.hootId);
     const comment = hoot.comments.id(req.params.commentId);
 
     // ensures the current user is the author of the comment
-      if (comment.author.toString() !== req.user._id) {
-        return res
-          .status(403)
-          .json({ message: "You are not authorized to edit this comment" });
-      }
+    if (comment.author.toString() !== req.user._id) {
+      return res
+        .status(403)
+        .json({ message: "You are not authorized to edit this comment" });
+    }
 
     hoot.comments.remove({ _id: req.params.commentId });
     await hoot.save();
-    res.status(200).json({ message: 'Ok' });
+    res.status(200).json({ message: "Ok" });
   } catch (err) {
     res.status(500).json(err);
   }
