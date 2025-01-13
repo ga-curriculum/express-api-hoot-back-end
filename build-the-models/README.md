@@ -148,8 +148,23 @@ Next we'll need to update the `hootSchema` with a `comments` property:
 ```js
 // models/hoot.js
 
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    comments: [commentSchema]
+const hootSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    text: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+      enum: ["News", "Sports", "Games", "Movies", "Music", "Television"],
+    },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    comments: [commentSchema], // add here
   },
   { timestamps: true }
 );

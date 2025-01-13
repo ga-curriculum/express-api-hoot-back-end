@@ -73,22 +73,6 @@ Next, you will want to install all of the packages listed in `package.json`
 npm i
 ```
 
-## Create your .gitignore
-
-Run the following command in your terminal:
-
-```bash
-touch .gitignore
-```
-
-Once these files are created, add `.env`, `package-lock.json`, and `node_modules` to your `.gitignore` file. Doing so will prevent those files and directories from being tracked and we can be confident that any data we add there will not be pushed up to GitHub.
-
-```text
-.env
-node_modules
-package-lock.json
-```
-
 ## Create your .env
 
 Run the following command in your terminal:
@@ -108,10 +92,15 @@ JWT_SECRET=supersecret
 
 > If you are unsure of where to obtain your MongoDB URI, please refer to the MongoDB Atlas Setup Lab.
 
+
+## Run the application
+
+If you check the `package.json` of your starter code, you'll see a script has been added to run the application using the dev dependency `nodemon`. 
+
 Start the application with the following command:
 
 ```bash
-nodemon server.js
+npm run dev
 ```
 
 Happy Coding!
