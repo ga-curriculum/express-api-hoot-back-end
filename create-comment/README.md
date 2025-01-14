@@ -110,3 +110,24 @@ After completing the steps above, your request in **Postman** should look someth
 A successful response will look like the following:
 
 ![Create comment response](./assets/comment-res.png)
+
+## Update Show controller 
+
+Now that we added a route to create comments, we need to make a small change to our `show` controller function. In addition to populating `author`, we also want to populate the `author` of each comment in the `comments` array: 
+
+```js
+// controllers/hoots.js
+
+router.get('/:hootId', async (req,res) => {
+  try {
+    const hoot = await Hoot.findById(req.params.hootId)
+      .populate(['author', 'comments.author'])
+    res.status(200).json(hoot)
+  } catch(error) {
+    res.status(500).json(error)
+  }
+})
+```
+
+Now, when the user hits this route, any comments inside of the comment array for the returned hoot will have their `author` property populated as well!
+
