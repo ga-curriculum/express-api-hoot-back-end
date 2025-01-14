@@ -66,9 +66,9 @@ router.put("/:hootId/comments/:commentId", verifyToken, async (req, res) => {
 
     comment.text = req.body.text;
     await hoot.save();
-    res.status(200).json({ message: "Updated!" });
+    res.status(200).json({ message: "Comment updated successfully" });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ err: err.message });
   }
 });
 ```
@@ -97,6 +97,6 @@ Your **Postman** request should look something like this.
 
 ![Update comment request](./assets/comment-update-req.png)
 
-The response should be an object containing a `message: "Updated!"` property:
+The response should be an object containing a `message: "Comment updated successfully"` property:
 
 ![Update comment response](./assets/comment-update-res.png)

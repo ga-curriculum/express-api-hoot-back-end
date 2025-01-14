@@ -28,13 +28,12 @@ DELETE /hoots/:hootId
 Add the following to `controllers/hoots.js`:
 
 ```jsx
-router.delete('/:hootId', verifyToken, async (req, res) => {
+router.delete("/:hootId", verifyToken, async (req, res) => {
   // add route
 });
 ```
 
 > ❗ A user needs to be logged in to delete a hoot, so be sure to include the `verifyToken` middleware.
-
 
 ## Code the controller function
 
@@ -53,7 +52,7 @@ Finally, we issue a JSON response with the `deletedHoot` object.
 ```js
 // controllers/hoots.js
 
-router.delete('/:hootId', verifyToken, async (req, res) => {
+router.delete("/:hootId", verifyToken, async (req, res) => {
   try {
     const hoot = await Hoot.findById(req.params.hootId);
 
@@ -63,8 +62,8 @@ router.delete('/:hootId', verifyToken, async (req, res) => {
 
     const deletedHoot = await Hoot.findByIdAndDelete(req.params.hootId);
     res.status(200).json(deletedHoot);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
   }
 });
 ```

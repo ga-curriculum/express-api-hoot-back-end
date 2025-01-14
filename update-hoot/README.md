@@ -30,7 +30,7 @@ Add the following to `controllers/hoots.js`:
 ```js
 // controllers/hoots.js
 
-router.put('/:hootId', verifyToken, async (req, res) => {
+router.put("/:hootId", verifyToken, async (req, res) => {
   // add route
 });
 ```
@@ -64,7 +64,7 @@ Add the following to `controllers/hoots.js`:
 ```js
 // controllers/hoots.js
 
-router.put('/:hootId', verifyToken, async (req, res) => {
+router.put("/:hootId", verifyToken, async (req, res) => {
   try {
     // Find the hoot:
     const hoot = await Hoot.findById(req.params.hootId);
@@ -86,8 +86,8 @@ router.put('/:hootId', verifyToken, async (req, res) => {
 
     // Issue JSON response:
     res.status(200).json(updatedHoot);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
   }
 });
 ```

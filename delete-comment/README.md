@@ -68,9 +68,9 @@ router.delete("/:hootId/comments/:commentId", verifyToken, async (req, res) => {
 
     hoot.comments.remove({ _id: req.params.commentId });
     await hoot.save();
-    res.status(200).json({ message: "Ok" });
+    res.status(200).json({ message: "Comment deleted successfully" });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ err: err.message });
   }
 });
 ```
@@ -89,6 +89,6 @@ Your **Postman** request should look something like this:
 
 ![Delete request](./assets/delete-req.png)
 
-The response should be an object containing a `message: "Ok"` property:
+The response should be an object containing a `message: "Comment deleted successfully"` property:
 
 ![Delete response](./assets/delete-res.png)

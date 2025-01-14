@@ -32,7 +32,7 @@ Add the following to `controllers/hoots.js`:
 ```js
 // controllers/hoots.js
 
-router.post('/:hootId/comments', verifyToken, async (req, res) => {
+router.post("/:hootId/comments", verifyToken, async (req, res) => {
   // add route
 });
 ```
@@ -58,7 +58,7 @@ Add the following to `controllers/hoots.js`:
 ```js
 // controllers/hoots.js
 
-router.post('/:hootId/comments', verifyToken, async (req, res) => {
+router.post("/:hootId/comments", verifyToken, async (req, res) => {
   try {
     req.body.author = req.user._id;
     const hoot = await Hoot.findById(req.params.hootId);
@@ -72,8 +72,8 @@ router.post('/:hootId/comments', verifyToken, async (req, res) => {
 
     // Respond with the newComment:
     res.status(201).json(newComment);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
   }
 });
 ```
