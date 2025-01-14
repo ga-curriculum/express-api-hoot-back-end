@@ -124,7 +124,7 @@ The last step is to define a `commentSchema` in `models/hoot.js`. The `commentSc
 
 Much like the `hootSchema`, the `commentSchema` will store a reference to the `author` and include `createdAt` and `updatedAt` `timestamps`.
 
-Add the following to `models/hoot.js`:
+Add the following `commentSchema` to `models/hoot.js`, be sure to place it *above* `hootSchema` as it will be referenced inside that object:
 
 ```js
 // models/hoot.js
