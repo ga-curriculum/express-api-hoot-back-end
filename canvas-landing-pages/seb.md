@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End](../assets/hero.png)
+<h1>
+  <span class="prefix">Express API</span>
+  <span class="headline">Hoot Back-End</span>
+</h1>
 
 ## About
 

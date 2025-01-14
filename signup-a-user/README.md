@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Signup a User](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Signup a User</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to sign up a new user using Postman.
 

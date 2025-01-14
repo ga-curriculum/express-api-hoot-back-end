@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Create Comment](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Create Comment</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able build a route that adds an embedded comment document to a specific hoot.
 

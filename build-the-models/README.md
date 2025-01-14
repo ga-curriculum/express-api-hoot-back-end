@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Build the Models](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Build the Models</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model for use with an Express API.
 
