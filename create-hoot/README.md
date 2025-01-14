@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Create Hoot](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Create Hoot</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to implement and test a POST route, allowing them to securely add new blog posts to the database and return the created posts as JSON responses.
 
@@ -32,16 +35,12 @@ Add the following boilerplate to `controllers/hoots.js`.
 ```jsx
 // controllers/hoots.js
 
-const express = require('express');
-const verifyToken = require('../middleware/verify-token.js');
-const Hoot = require('../models/hoot.js');
+const express = require("express");
+const verifyToken = require("../middleware/verify-token.js");
+const Hoot = require("../models/hoot.js");
 const router = express.Router();
 
-// ========== Public Routes ===========
-
-// ========= Protected Routes =========
-
-router.use(verifyToken);
+// add routes here
 
 module.exports = router;
 ```
@@ -53,7 +52,7 @@ Add the following to `server.js`:
 ```jsx
 // server.js
 
-const hootsRouter = require('./controllers/hoots.js');
+const hootsRouter = require("./controllers/hoots.js");
 ```
 
 And mount the router:
@@ -61,7 +60,7 @@ And mount the router:
 ```jsx
 // server.js
 
-app.use('/hoots', hootsRouter);
+app.use("/hoots", hootsRouter);
 ```
 
 ## Define the route
@@ -72,59 +71,66 @@ Next we'll define a route that listens for `POST` requests on `'/hoots'`:
 POST /hoots
 ```
 
-Add the following to `controllers/hoots.js`:
+Add the following route to `controllers/hoots.js`:
 
 ```jsx
 // controllers/hoots.js
 
-// ========= Protected Routes =========
-
-router.use(verifyToken);
-
-router.post('/', async (req, res) => {});
+router.post("/", verifyToken, async (req, res) => {
+  // new route
+});
 ```
 
-> 🏆 Any route that requires auth should go below `router.use(verifyToken)`. These are our **Protected Routes**. A user needs to be logged in to create a hoot, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
+> 🏆 Adding `verifyToken` directly to this route guarantees its protection, independent of the order in which middleware is applied elsewhere in the application. This approach is the recommended method for handling authentication when securing routes individually.
 
-> 💡 In `server.js`, we defined a base path of `/hoots` for our `hootsRouter`. Therefore, we will provide the `router` above with a path of `/`, as this will be appended to the end of what is defined in `server.js`.
+> 💡 In `server.js`, we set the base path for our `hootsRouter` as `/hoots`. This means that when defining the `router` above, we only need to specify the path as `/`. This path will automatically be appended to the base path `/hoots` defined in `server.js`.
 
-## Code the controller function
+## Code the Controller Function
 
-Let's breakdown what we'll accomplish inside our controller function.
+Let’s break down what we’ll do inside the controller function step by step:
 
-First, before creating a `hoot`, we'll append `req.user._id` to `req.body.author`. This updates the form data that will be used to create the resource, and ensures that the logged in user is marked as the `author` of a `hoot`.
+1. **Add the logged-in user as the author**  
+   Before creating a new `hoot`, we’ll add the logged-in user’s ID (`req.user._id`) to the `req.body.author`. This ensures that the logged-in user is recorded as the author of the `hoot`.
 
-Next, we'll call `create()` on our `Hoot` model, and pass in `req.body`. The `create()` method will return a new `hoot` document. The `author` property of this document **will only contain an ObjectId**, as the data has not yet been populated. In lieu of the `populate()` method, we'll append a complete `user` object to the `hoot` document, as `user` is already accessible on our request object (`req`).
+2. **Create the hoot**  
+   We’ll use the `create()` method from the `Hoot` model, passing in `req.body`. This method will create a new `hoot` document.
 
-> 💡 Without this step, newly submitted hoots on the client-side would not be able to immediately render information about the author.
+   - At first, the `author` property in this document will only have the user’s ID (an ObjectId).
+   - To include the full user information, we’ll add the complete `user` object (already available in `req`) to the new `hoot`.
 
-Once the new `hoot` is created, we'll send a JSON response with the new `hoot` object.
+   > 💡 This step is important so that the new `hoot` can immediately display the author’s details on the client side.
+
+3. **Send the response**  
+   After creating the new `hoot`, we’ll send it back as a JSON response. This way, the client can immediately show the new hoot with all its information.
 
 Add the following to `controllers/hoots.js`:
 
 ```jsx
 // controllers/hoots.js
 
-router.post('/', async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   try {
     req.body.author = req.user._id;
     const hoot = await Hoot.create(req.body);
     hoot._doc.author = req.user;
     res.status(201).json(hoot);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
   }
 });
 ```
 
-> 💡 When we call Mongoose's `create()` method, the newly created document is not just a plain JavaScript object, but an instance of a **Mongoose document**. Before being converted to JSON, this document adds another layer to the structure of a `hoot`, including a `_doc` property containing the document that was retrieved from MongoDB. Normally, we don't need to concern ourselves with this detail, but because we are modifying the `author` property before issuing a response, we'll need to go through the `_doc` property of `hoot`, to access the actual document.
+> 💡 When we use Mongoose's `create()` method, the new `hoot` is not just a regular JavaScript object—it’s a **Mongoose document**. This document includes an extra `_doc` property, which holds the actual data retrieved from MongoDB. Normally, we don’t need to worry about this, but since we’re updating the `author` property before sending the response, we’ll need to access the `hoot._doc` property to work with the actual data.
 
 ## Test the route in Postman
 
-Now that we have finished the route let's test it with Postman. We'll do this by sending a `POST` request to `http://localhost:3000/hoots`.
+Now that we have finished the route let's test it with Postman. We'll do this by sending a `POST` request to
 
-Recall that our `hootSchema` has the following specifications:
+```sh
+http://localhost:3000/hoots
+```
+
+Recall that our `hootSchema` has the following data fields:
 
 ```js
 // models/hoot.js
@@ -142,9 +148,9 @@ const hootSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ['News', 'Sports', 'Games', 'Movies', 'Music', 'Television'],
+      enum: ["News", "Sports", "Games", "Movies", "Music", "Television"],
     },
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     comments: [commentSchema],
   },
   { timestamps: true }
@@ -159,7 +165,7 @@ In **Postman**, make a new `POST` request called **Create**.
 
 Add the following URL:
 
-```
+```sh
 http://localhost:3000/hoots
 ```
 

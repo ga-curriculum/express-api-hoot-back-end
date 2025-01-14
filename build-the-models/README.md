@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Build the Models](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Build the Models</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to define and export a mongoose model for use with an Express API.
 
@@ -124,7 +127,7 @@ The last step is to define a `commentSchema` in `models/hoot.js`. The `commentSc
 
 Much like the `hootSchema`, the `commentSchema` will store a reference to the `author` and include `createdAt` and `updatedAt` `timestamps`.
 
-Add the following to `models/hoot.js`:
+Add the following `commentSchema` to `models/hoot.js`, be sure to place it *above* `hootSchema` as it will be referenced inside that object:
 
 ```js
 // models/hoot.js
@@ -148,8 +151,23 @@ Next we'll need to update the `hootSchema` with a `comments` property:
 ```js
 // models/hoot.js
 
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    comments: [commentSchema]
+const hootSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    text: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+      enum: ["News", "Sports", "Games", "Movies", "Music", "Television"],
+    },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    comments: [commentSchema], // add here
   },
   { timestamps: true }
 );

@@ -1,14 +1,11 @@
-# ![Express API - Hoot Back-End](./assets/hero.png)
+<h1>
+  <span class="prefix">Express API</span>
+  <span class="headline">Hoot Back-End</span>
+</h1>
 
 ## About
 
 In this module, students will build a backend for the Hoot blogging platform using Express and MongoDB. They will create a RESTful API that supports full CRUD functionality for blog posts and comments. Throughout the module, students will focus on designing RESTful routes, managing data relationships with MongoDB, and testing API endpoints with tools like Postman. This practical experience will equip students with essential backend development skills and prepare them for building a full-stack `MERN` application.
-
-## Prerequisites
-
-- JWT Authentication in Express APIs
-- MongoDB Atlas
-- Postman
 
 ## Content
 
@@ -36,15 +33,28 @@ In this module, students will build a backend for the Hoot blogging platform usi
 
 📖 [Reference Materials](./references/README.md)
 
-## Starter code
+## Internal
+
+### Prerequisites
+
+- JWT Authentication in Express APIs
+- MongoDB Atlas
+- Postman
+
+### Starter code
 
 🟢 [JWT Auth Template Starter code](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template)
 
-## Solution code
+### Solution code
 
 🏁 [Solution code](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-hoot-back-end-solution)
 
-## Internal resources
+### Course landing pages
+
+- [SEB - Software Engineering Bootcamp](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/express-api-hoot-back-end/canvas-landing-pages/seb.html)
+- [Fallback](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/express-api-hoot-back-end/canvas-landing-pages/fallback.html)
+
+### Resources
 
 ✏️ [Instructor Guide](./internal-resources/instructor-guide.md)
 
@@ -54,4 +64,4 @@ In this module, students will build a backend for the Hoot blogging platform usi
 
 ---
 
-**Find a 👾 bug 👾 or have suggestions? [Let us know](https://git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/blob/main/module-feedback.md)!**
+**Find a 👾 bug 👾 or have suggestions? [Let us know](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/module-feedback.html)!**

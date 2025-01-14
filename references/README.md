@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - References](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">References</span>
+</h1>
 
 
 ## Level Up references

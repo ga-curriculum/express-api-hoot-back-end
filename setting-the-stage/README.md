@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Setting the Stage](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Setting the Stage</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will understand the architecture and functional requirements of building a secure Express API for a blogging application, including user authentication and CRUD operations for blog posts and comments.
 
@@ -19,11 +22,11 @@ To demonstrate JWT Authentication, our Express application will use `verifyToken
 Our Express API should include functionality for the following user stories:
 
 - As a guest, I should be able to create an account.
-- As a guest with an account, I should be able to log in to my account.
-- AAU, I should be able to create a hoot post.
-- AAU, I should be able to read a list of all hoots.
-- AAU, I should be able to view information about a single hoot post along with its associated comments.
-- AAU, I should be able to add a comment to a specific hoot.
+- As a user with an account, I should be able to log in to my account.
+- As a user, I should be able to create a hoot post.
+- As a user, I should be able to read a list of all hoots.
+- As a user, I should be able to view information about a single hoot post along with its associated comments.
+- As a user, I should be able to add a comment to a specific hoot.
 - As the author of a hoot, I should be able to update that hoot.
 - As the author of a hoot, I should be able to delete that hoot.
 
@@ -48,4 +51,4 @@ Below you can see a chart outlining the RESTful routes required for this applica
 | DELETE      | deleteHoot    | 200      | /hoots/:hootId          | Delete a hoot     |
 | POST        | createComment | 200      | /hoots/:hootId/comments | Create a comment  |
 
-> ❗ In Postman, remember to double-quote all JSON keys in the data payload (body).
+> ❗ Important: When testing these routes in Postman, make sure to enclose all JSON keys in the data payload (body) with double quotes (`"`). JSON requires keys to be wrapped in double quotes to work correctly.

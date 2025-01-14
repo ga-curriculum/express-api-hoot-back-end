@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Index Hoots](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Index Hoots</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to create an index route to retrieve all hoots from the database and send this data as a JSON response to the client.
 
@@ -30,10 +33,12 @@ Inside `controllers/hoots.js`, add the following:
 ```jsx
 // controllers/hoots.js
 
-router.get('/', async (req, res) => {});
+router.get("/", verifyToken, async (req, res) => {
+  // new route
+});
 ```
 
-> ❗ A user needs to be logged in to view a list of hoots, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
+> ❗ A user needs to be logged in to view a list of hoots, so be sure to include the `verifyToken` middleware.
 
 > 💡 Restricting access to the `index` and `show` functionality will reduce the amount of conditional rendering we need to implement in our React app.
 
@@ -54,21 +59,21 @@ Add the following to `controllers/hoots.js`:
 ```jsx
 // controllers/hoots.js
 
-router.get('/', async (req, res) => {
+router.get("/", verifyToken, async (req, res) => {
   try {
     const hoots = await Hoot.find({})
-      .populate('author')
-      .sort({ createdAt: 'desc' });
+      .populate("author")
+      .sort({ createdAt: "desc" });
     res.status(200).json(hoots);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
   }
 });
 ```
 
 ## Test the route in Postman
 
-Now that we have finished the route let's test it with Postman. We'll do this by sending a `GET` request to `http://localhost:3000/hoots`.
+Now that we have finished the route let's test it with Postman. We'll do this by sending a `GET` request to `/hoots`.
 
 Within Postman, create a new `GET` request. We'll name this request **Index**.
 
@@ -77,6 +82,8 @@ Your Postman URL should look like this:
 ```
 http://localhost:3000/hoots
 ```
+
+> 💡 Remember to include your token.
 
 If your request was successful, the response will include an array of `hoot` objects, with a populated `author` property inside each `hoot` object:
 

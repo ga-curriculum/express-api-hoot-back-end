@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Delete Hoot](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Delete Hoot</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able build a route that removes a single hoot from the database by id.
 
@@ -28,12 +31,12 @@ DELETE /hoots/:hootId
 Add the following to `controllers/hoots.js`:
 
 ```jsx
-router.delete('/:hootId', async (req, res) => {});
+router.delete("/:hootId", verifyToken, async (req, res) => {
+  // add route
+});
 ```
 
-> ❗ A user needs to be logged in to delete a hoot, so we should define our new route inside the **Protected Routes** section of `controllers/hoots.js`.
-
-> 💡 Remember, in `server.js`, we defined a base path of `/hoots` for our `hootsRouter`. Therefore, we will provide the `router` above with a path of `'/:hootId'`, as this will be appended to the end of what is defined in `server.js`.
+> ❗ A user needs to be logged in to delete a hoot, so be sure to include the `verifyToken` middleware.
 
 ## Code the controller function
 
@@ -52,7 +55,7 @@ Finally, we issue a JSON response with the `deletedHoot` object.
 ```js
 // controllers/hoots.js
 
-router.delete('/:hootId', async (req, res) => {
+router.delete("/:hootId", verifyToken, async (req, res) => {
   try {
     const hoot = await Hoot.findById(req.params.hootId);
 
@@ -62,8 +65,8 @@ router.delete('/:hootId', async (req, res) => {
 
     const deletedHoot = await Hoot.findByIdAndDelete(req.params.hootId);
     res.status(200).json(deletedHoot);
-  } catch (error) {
-    res.status(500).json(error);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
   }
 });
 ```
@@ -72,7 +75,7 @@ router.delete('/:hootId', async (req, res) => {
 
 ## Test the route in Postman
 
-Now that we have finished the route let's test it with Postman. We'll do this by sending a `DELETE` request to `http://localhost:3000/hoots/:hootId`.
+Now that we have finished the route let's test it with Postman. We'll do this by sending a `DELETE` request to `/:hootId`.
 
 Create a new request in Postman. Let's name this request **Delete** and set its request type to `DELETE`. To test it out, we'll need to grab a hoot `_id` again. Feel free to use the same Postman URL we used for **Show**.
 

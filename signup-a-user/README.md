@@ -1,4 +1,7 @@
-# ![Express API - Hoot Back-End - Signup a User](./assets/hero.png)
+<h1>
+  <span class="headline">Hoot Back-End</span>
+  <span class="subhead">Signup a User</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to sign up a new user using Postman.
 
@@ -8,37 +11,39 @@ To get started, we'll use Postman and the existing Sign Up functionality provide
 
 Before diving into Postman, let's take a moment to review a few relevant pieces of code for signing up a user.
 
-In `server.js`, you'll notice that the `usersRouter` is mounted with a base path of `/users`. This means all routes within `usersRouter` will begin with `/users`:
+In `server.js`, you'll notice that the `authRouter` is mounted with a base path of `/auth`. This means all routes within `authRouter` will begin with `/auth`. This includes our `sign-up` and `sign-in` routes.
 
 ```js
 // server.js
 
-app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 ```
 
-Take note of the `/signup` route defined in `controllers/users.js`:
+Take note of the `/sign-up` route defined in `controllers/auth.js`:
 
 ```js
-// controllers/users.js
+// controllers/auth.js
 
-router.post('/signup', async (req, res) => {...});
+router.post('/sign-up', async (req, res) => {...});
 ```
 
 As a result, with Postman we'll make requests to the following:
 
 ```
-POST /users/signup
+POST /auth/sign-up
 ```
 
-The last detail to take note of is the response (`res`) issued by our signup controller:
+The last detail to take note of is the response (`res`) issued by the `sign-up` route:
 
 ```js
-// controllers/users.js
+// controllers/auth.js
 
-res.status(201).json({ user, token });
+res.status(201).json({ token });
 ```
 
 Notice the route returns a `token`. We'll add this `token` to a special tab in Postman, which will allow us to included it as a bearer token on future requests. This will be important, as beyond sign up and sign in, all other features in this application will be protected, requiring authenticated requests to access them.
+
+**Start your server** and let's begin testing our routes! 
 
 ## Test the route in Postman
 
@@ -59,16 +64,16 @@ We need to make a new Postman request called **Signup**. Start by updating the f
 - Change the request type to a **POST** request, and provide the URL that matches the signup route:
 
     ```
-    http://localhost:3000/users/signup
+    http://localhost:3000/auth/sign-up
     ```
 
 After doing this, your Postman interface should look like the following:
 
-![Signup](./assets/signup.png)
+![Signup](./assets/signup.png) tktk : new image url - http://localhost:3000/auth/sign-up
 
 Finally, be sure to click the **Save** button:
 
-![Save](./assets/save.png)
+![Save](./assets/save.png) tktk : new image url - http://localhost:3000/auth/sign-up
 
 Add some test account information to the **Body** in **Postman**, as shown below:
 
@@ -81,11 +86,11 @@ Add some test account information to the **Body** in **Postman**, as shown below
 
 If the request was successful, you should see something like the following response:
 
-![Response](./assets/response.png)
+![Response](./assets/response.png) tktk : new image url - http://localhost:3000/auth/sign-up
 
 We'll be using the `token` issued here in the next few steps, so be sure to *save it somewhere easily accessible*. When you copy the value of the token, **do not include the quotes**.
 
-![Token](./assets/token.png)
+![Token](./assets/token.png) tktk : new image url - http://localhost:3000/auth/sign-up
 
 Select your Hoot collection in **Postman**. Click on the **Authorization** tab. 
 
