@@ -43,11 +43,11 @@ In this module, students will build a backend for the Hoot blogging platform usi
 
 ### Starter code
 
-🟢 [JWT Auth Template Starter code](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template)
+🟢 [JWT Auth Template Starter code](https://github.com/ga-curriculum/express-api-jwt-auth-template)
 
 ### Solution code
 
-🏁 [Solution code](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-hoot-back-end-solution)
+🏁 [Solution code](https://github.com/ga-curriculum/express-api-hoot-back-end-solution)
 
 ### Course landing pages
 
