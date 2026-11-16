@@ -11,7 +11,7 @@ In this module, we'll build an Express API that serves as the back-end for a ful
 
 Within our Express API, we'll implement full CRUD functionality on a blog post resource `hoots`. Additionally, we will implement `create` functionality on an embedded resource called `comments`.
 
-Our Express API will make use of the [Express API JWT Auth Template](https://git.generalassemb.ly/modular-curriculum-all-courses/express-api-jwt-auth-template.git). This template provides our Express application with pre configured JWT Authentication. This style of authentication in HTTP uses tokens, or unique identifier strings, to tell who a user is when they're making an authenticated request.
+Our Express API will make use of the [Express API JWT Auth Template](https://github.com/ga-curriculum/express-api-jwt-auth-template.git). This template provides our Express application with pre configured JWT Authentication. This style of authentication in HTTP uses tokens, or unique identifier strings, to tell who a user is when they're making an authenticated request.
 
 Thanks to this template, our Express application will already be able to **sign up** and **sign in** users. The template also includes a `verifyToken` middleware function. The `verifyToken` middleware ensures that any route following it in the middleware pipeline will require authentication before proceeding.
 
